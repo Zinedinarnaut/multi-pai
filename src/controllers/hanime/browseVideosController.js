@@ -25,6 +25,6 @@ export const getBrowseVideos = async (type, category, page) => {
         slug: x.slug,
         cover_url: x.cover_url,
         views: x.views,
-        link: `/watch/${x.slug}`,
+        link: `/video/${x.slug}`,
     }));
 };
