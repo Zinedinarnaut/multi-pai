@@ -68,9 +68,9 @@ app.use((err, req, res, next) => {
 });
 
 // HiAnime Routes
-app.use('/anime/info/:ID', animeInfoRoute);
-app.use('/anime/servers', animeServersRoute);
-app.use('/anime/sources', animeSourcesRoute);
+app.use('/hianime/info', animeInfoRoute);
+app.use('/hianime/servers', animeServersRoute);
+app.use('/hianime/sources', animeSourcesRoute);
 
 // Hanime Routes
 app.use('/hanime/video', watchRoute);

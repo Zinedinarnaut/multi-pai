@@ -46,7 +46,7 @@ export const searchNScrapeEPs = async (searchTitle) => {
         const resp = await client.get(
             `${HIANIME_BASEURL}/search?keyword=${searchTitle.english}`
         );
-        if (!resp) return console.log("No response from hianime!");
+        if (!resp) return console.log("No response from hianime/Anilist!");
         const $ = load(resp.data);
         let similarTitles = [];
         $(".film_list-wrap > .flw-item .film-detail .film-name a")
