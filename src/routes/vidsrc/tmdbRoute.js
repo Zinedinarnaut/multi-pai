@@ -1,6 +1,6 @@
 import express from "express";
-import { getVidsrcSourcesId, getVidsrcSourceDetails, getVidsrcSources, getSubtitles } from "../../vidsrc/hooks.js";
-import { encodeId, generateRandomIp, getFutoken } from "../../vidsrc/vidplay/utils.js";
+import {getSubtitles, getVidsrcSourceDetails, getVidsrcSources, getVidsrcSourcesId} from "../../vidsrc/hooks.js";
+import {encodeId, generateRandomIp, getFutoken} from "../../vidsrc/vidplay/utils.js";
 import randomUserAgent from 'random-useragent';
 
 const router = express.Router();
@@ -18,11 +18,12 @@ router.get('/:tmdbId', async (req, res) => {
             return: "Oops media not available"
         })
         return;
-    };
+    }
+
 
     const sources = await getVidsrcSources(sourcesId);
     const vidplay = sources.result.find((v) => v.title.toLowerCase() === 'vidplay');
-    if(!vidplay) res.status(404).json('vidplay stream not found for vidsrc');
+    if (!vidplay) res.status(404).json('vidplay stream not found for vidsrc');
 
     const vidplayLink = await getVidsrcSourceDetails(vidplay.id);
 
@@ -47,7 +48,7 @@ router.get('/:tmdbId', async (req, res) => {
     }
 
     const source = result.sources?.[0]?.file;
-    if(!source) res.status(404).send({
+    if (!source) res.status(404).send({
         status: 404,
         return: "Oops reached rate limit of this api"
     })

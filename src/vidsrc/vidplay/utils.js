@@ -13,13 +13,13 @@ export async function encodeId(v_id) {
 }
 
 export async function getFutoken(key, url) {
-    const response = await (await fetch(`${vidplayBase}/futoken`, { headers: { "Referer": `${url}/` } })).text();
+    const response = await (await fetch(`${vidplayBase}/futoken`, {headers: {"Referer": `${url}/`}})).text();
     const fuKey = response.match(/var\s+k\s*=\s*'([^']+)'/)[1];
     return `${fuKey},${Array.from({length: key.length}, (_, i) => (fuKey.charCodeAt(i % fuKey.length) + key.charCodeAt(i)).toString()).join(',')}`;
 }
 
 export const generateRandomIp = () => {
-    return (Math.floor(Math.random() * 255) + 1)+"."+(Math.floor(Math.random() * 255))+"."+(Math.floor(Math.random() * 255))+"."+(Math.floor(Math.random() * 255));
+    return (Math.floor(Math.random() * 255) + 1) + "." + (Math.floor(Math.random() * 255)) + "." + (Math.floor(Math.random() * 255)) + "." + (Math.floor(Math.random() * 255));
 }
 
 function keyPermutation(key, data) {

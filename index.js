@@ -1,5 +1,51 @@
 import express from 'express';
 import cors from 'cors';
+// Hanime Routes
+import watchRoute from './src/routes/hanime/watchRoute.js';
+import trendingRoute from './src/routes/hanime/trendingRoute.js';
+import browseRoute from './src/routes/hanime/browseRoute.js';
+import tagsRoute from './src/routes/hanime/tagsRoute.js';
+import browseVideosRoute from './src/routes/hanime/browseVideosRoute.js';
+
+// Gogoanime Routes
+import {handleSearch} from './src/routes/gogoanime/searchRoute.js';
+import {handleRecentlyAdded} from './src/routes/gogoanime/getRecentlyAdded.js';
+import {handleOngoingSeries} from './src/routes/gogoanime/getOngoingSeries.js';
+import {handleGenrePage} from './src/routes/gogoanime/genrePage.js';
+import {handleAnimeAZPage} from './src/routes/gogoanime/animeAZPage.js';
+import {handleAnimeListPage} from './src/routes/gogoanime/animeListPage.js';
+import {handleAnimeList} from './src/routes/gogoanime/animeList.js';
+import {handleAnimeListAZ} from './src/routes/gogoanime/animeListAZ.js';
+import {handlePopularPage} from './src/routes/gogoanime/popularPage.js';
+import {handleNewSeasonPage} from './src/routes/gogoanime/newSeasonPage.js';
+import {handleCompletedPage} from './src/routes/gogoanime/completedPage.js';
+import {handleOngoingPage} from './src/routes/gogoanime/ongoingPage.js';
+import {handleMoviePage} from './src/routes/gogoanime/moviePage.js';
+import {handleSubCategoryPage} from './src/routes/gogoanime/subCategoryPage.js';
+import {handleRecentReleasePage} from './src/routes/gogoanime/recentReleasePage.js';
+import {handleRecentRelease} from './src/routes/gogoanime/recentRelease.js';
+import {handleNewSeason} from './src/routes/gogoanime/newSeason.js';
+import {handleOngoingAnime} from './src/routes/gogoanime/ongoingAnime.js';
+import {handleCompletedAnime} from './src/routes/gogoanime/completedAnime.js';
+import {handlePopularAnime} from './src/routes/gogoanime/popularAnime.js';
+import {handleAnimeMovies} from './src/routes/gogoanime/animeMovies.js';
+import {handleTopAiringAnime} from './src/routes/gogoanime/topAiringAnime.js';
+import {handleSeason} from './src/routes/gogoanime/season.js';
+import {handleGenre} from './src/routes/gogoanime/genre.js';
+import {handleGetAnime} from './src/routes/gogoanime/getAnime.js';
+import {handleFembed} from './src/routes/gogoanime/fembed.js';
+import {handleGetEpisode} from './src/routes/gogoanime/getEpisode.js';
+import {handleThread} from './src/routes/gogoanime/thread.js';
+import {handleDownloadLinks} from './src/routes/gogoanime/downloadLinks.js';
+import {handleDownload} from './src/routes/gogoanime/download.js';
+
+// Vidsrc Routes
+import tmdbRoutes from "./src/routes/vidsrc/tmdbRoute.js";
+
+// HiAnime Routes
+import animeInfoRoute from './src/routes/hianime/animeInfo.js';
+import animeServersRoute from './src/routes/hianime/animeServers.js';
+import animeSourcesRoute from './src/routes/hianime/animeSources.js';
 
 const corsOptions = {
     origin: '*',
@@ -12,59 +58,10 @@ const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
 
-
-// Hanime Routes
-import watchRoute from './src/routes/hanime/watchRoute.js';
-import trendingRoute from './src/routes/hanime/trendingRoute.js';
-import browseRoute from './src/routes/hanime/browseRoute.js';
-import tagsRoute from './src/routes/hanime/tagsRoute.js';
-import browseVideosRoute from './src/routes/hanime/browseVideosRoute.js';
-
-// Gogoanime Routes
-import { handleSearch } from './src/routes/gogoanime/searchRoute.js';
-import { handleRecentlyAdded } from './src/routes/gogoanime/getRecentlyAdded.js';
-import { handleOngoingSeries } from './src/routes/gogoanime/getOngoingSeries.js';
-import { handleGenrePage } from './src/routes/gogoanime/genrePage.js';
-import { handleAnimeAZPage } from './src/routes/gogoanime/animeAZPage.js';
-import { handleAnimeListPage } from './src/routes/gogoanime/animeListPage.js';
-import { handleAnimeList } from './src/routes/gogoanime/animeList.js';
-import { handleAnimeListAZ } from './src/routes/gogoanime/animeListAZ.js';
-import { handlePopularPage } from './src/routes/gogoanime/popularPage.js';
-import { handleNewSeasonPage } from './src/routes/gogoanime/newSeasonPage.js';
-import { handleCompletedPage } from './src/routes/gogoanime/completedPage.js';
-import { handleOngoingPage } from './src/routes/gogoanime/ongoingPage.js';
-import { handleMoviePage } from './src/routes/gogoanime/moviePage.js';
-import { handleSubCategoryPage } from './src/routes/gogoanime/subCategoryPage.js';
-import { handleRecentReleasePage } from './src/routes/gogoanime/recentReleasePage.js';
-import { handleRecentRelease } from './src/routes/gogoanime/recentRelease.js';
-import { handleNewSeason } from './src/routes/gogoanime/newSeason.js';
-import { handleOngoingAnime } from './src/routes/gogoanime/ongoingAnime.js';
-import { handleCompletedAnime } from './src/routes/gogoanime/completedAnime.js';
-import { handlePopularAnime } from './src/routes/gogoanime/popularAnime.js';
-import { handleAnimeMovies } from './src/routes/gogoanime/animeMovies.js';
-import { handleTopAiringAnime } from './src/routes/gogoanime/topAiringAnime.js';
-import { handleSeason } from './src/routes/gogoanime/season.js';
-import { handleGenre } from './src/routes/gogoanime/genre.js';
-import { handleGetAnime } from './src/routes/gogoanime/getAnime.js';
-import { handleFembed } from './src/routes/gogoanime/fembed.js';
-import { handleGetEpisode } from './src/routes/gogoanime/getEpisode.js';
-import { handleThread } from './src/routes/gogoanime/thread.js';
-import { handleDownloadLinks } from './src/routes/gogoanime/downloadLinks.js';
-import { handleDownload } from './src/routes/gogoanime/download.js';
-
-// Vidsrc Routes
-import tmdbRoutes from "./src/routes/vidsrc/tmdbRoute.js";
-
-// HiAnime Routes
-
-import animeInfoRoute from './src/routes/hianime/animeInfo.js';
-import animeServersRoute from './src/routes/hianime/animeServers.js';
-import animeSourcesRoute from './src/routes/hianime/animeSources.js';
-
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).json({ error: 'Something went wrong' });
+    res.status(500).json({error: 'Something went wrong'});
 });
 
 // HiAnime Routes

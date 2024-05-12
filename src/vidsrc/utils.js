@@ -1,5 +1,5 @@
-import { decode } from "html-entities";
-import { vidsrcBase } from "./common.js";
+import {decode} from "html-entities";
+import {vidsrcBase} from "./common.js";
 
 export function adecode(str) {
     const keyBytes = Buffer.from('WXrUARXb1aDLaZjI', 'utf-8');

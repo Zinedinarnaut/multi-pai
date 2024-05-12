@@ -24,6 +24,7 @@ export async function generateEncryptAjaxParameters($, id) {
 
     return 'id=' + encrypted_key + '&alias=' + id + '&' + token;
 }
+
 /**
  * Decrypts the encrypted-ajax.php response
  * @param {object} obj Response from the server

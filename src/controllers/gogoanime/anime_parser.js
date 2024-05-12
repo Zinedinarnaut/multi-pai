@@ -1,14 +1,6 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
 
-import {
-    generateEncryptAjaxParameters,
-    decryptEncryptAjaxResponse,
-} from './helpers/extractors/goload.js';
-import { extractStreamSB } from './helpers/extractors/streamsb.js';
-import { extractFembed } from './helpers/extractors/fembed.js';
-import { USER_AGENT, renameKey } from './utils.js';
-
 const BASE_URL = 'https://anitaku.so/';
 const ajax_url = 'https://ajax.gogocdn.net/';
 const anime_movies_path = '/anime-movies.html';
@@ -79,7 +71,7 @@ const Genres = [
 ];
 
 
-export const scrapeSearch = async ({ list = [], keyw, page = 1 }) => {
+export const scrapeSearch = async ({list = [], keyw, page = 1}) => {
     try {
         const searchPage = await axios.get(
             `${BASE_URL + search_path}?keyword=${keyw}&page=${page}`
@@ -98,11 +90,11 @@ export const scrapeSearch = async ({ list = [], keyw, page = 1 }) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeRecentRelease = async ({ list = [], page = 1, type = 1 }) => {
+export const scrapeRecentRelease = async ({list = [], page = 1, type = 1}) => {
     try {
         const mainPage = await axios.get(`
         ${recent_release_url}?page=${page}&type=${type}
@@ -122,13 +114,12 @@ export const scrapeRecentRelease = async ({ list = [], page = 1, type = 1 }) => 
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
 
-
-export const scrapeAnimeList = async ({ list = [], page = 1 }) => {
+export const scrapeAnimeList = async ({list = [], page = 1}) => {
     try {
         const AnimeList = await axios.get(`${BASE_URL}/anime-list.html?page=${page}`);
         const $ = cheerio.load(AnimeList.data);
@@ -143,11 +134,11 @@ export const scrapeAnimeList = async ({ list = [], page = 1 }) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeAnimeAZ = async ({ list = [], aph, page = 1 }) => {
+export const scrapeAnimeAZ = async ({list = [], aph, page = 1}) => {
     try {
         const AnimeAZ = await axios.get(`${BASE_URL}/anime-list-${aph}?page=${page}`);
         const $ = cheerio.load(AnimeAZ.data);
@@ -162,7 +153,7 @@ export const scrapeAnimeAZ = async ({ list = [], aph, page = 1 }) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
@@ -180,7 +171,7 @@ export const scrapeRecentlyAdded = async ({list = [], page = 1}) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
@@ -198,11 +189,11 @@ export const scrapeOngoingSeries = async ({list = [], page = 1}) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeNewSeason = async ({ list = [], page = 1 }) => {
+export const scrapeNewSeason = async ({list = [], page = 1}) => {
     try {
         const popularPage = await axios.get(`
         ${BASE_URL + new_season_path}?page=${page}
@@ -220,11 +211,11 @@ export const scrapeNewSeason = async ({ list = [], page = 1 }) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeOngoingAnime = async ({ list = [], page = 1 }) => {
+export const scrapeOngoingAnime = async ({list = [], page = 1}) => {
     try {
         const OngoingAnime = await axios.get(`${BASE_URL}/ongoing-anime.html?page=${page}`);
         const $ = cheerio.load(OngoingAnime.data);
@@ -240,11 +231,11 @@ export const scrapeOngoingAnime = async ({ list = [], page = 1 }) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeCompletedAnime = async ({ list = [], page = 1 }) => {
+export const scrapeCompletedAnime = async ({list = [], page = 1}) => {
     try {
         const CompletedAnime = await axios.get(`${BASE_URL}/completed-anime.html?page=${page}`);
         const $ = cheerio.load(CompletedAnime.data);
@@ -260,11 +251,11 @@ export const scrapeCompletedAnime = async ({ list = [], page = 1 }) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapePopularAnime = async ({ list = [], page = 1 }) => {
+export const scrapePopularAnime = async ({list = [], page = 1}) => {
     try {
         const popularPage = await axios.get(`
         ${BASE_URL + popular_path}?page=${page}
@@ -282,11 +273,11 @@ export const scrapePopularAnime = async ({ list = [], page = 1 }) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeAnimeMovies = async ({ list = [], aph = '', page = 1 }) => {
+export const scrapeAnimeMovies = async ({list = [], aph = '', page = 1}) => {
     try {
         const popularPage = await axios.get(`
         ${BASE_URL + anime_movies_path}?aph=${aph.trim().toUpperCase()}&page=${page}
@@ -304,13 +295,13 @@ export const scrapeAnimeMovies = async ({ list = [], aph = '', page = 1 }) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeTopAiringAnime = async ({ list = [], page = 1 }) => {
+export const scrapeTopAiringAnime = async ({list = [], page = 1}) => {
     try {
-        if (page == -1) {
+        if (page === -1) {
             let pageNum = 1;
             let hasMore = true;
             while (hasMore) {
@@ -319,7 +310,7 @@ export const scrapeTopAiringAnime = async ({ list = [], page = 1 }) => {
                 `);
                 const $ = cheerio.load(popular_page.data);
 
-                if ($('div.added_series_body.popular > ul > li').length == 0) {
+                if ($('div.added_series_body.popular > ul > li').length === 0) {
                     hasMore = false;
                     continue;
                 }
@@ -375,11 +366,11 @@ export const scrapeTopAiringAnime = async ({ list = [], page = 1 }) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeGenre = async ({ list = [], genre, page = 1 }) => {
+export const scrapeGenre = async ({list = [], genre, page = 1}) => {
     try {
         genre = genre.trim().replace(/ /g, '-').toLowerCase();
 
@@ -398,10 +389,10 @@ export const scrapeGenre = async ({ list = [], genre, page = 1 }) => {
             });
             return list;
         }
-        return { error: 'Genre Not Found' };
+        return {error: 'Genre Not Found'};
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
@@ -416,7 +407,7 @@ export const scrapeGenre = async ({ list = [], genre, page = 1 }) => {
  * .catch((err) => console.log(err))
  *
  */
-export const scrapeAnimeDetails = async ({ id }) => {
+export const scrapeAnimeDetails = async ({id}) => {
     try {
         let genres = [];
         let epList = [];
@@ -479,11 +470,11 @@ export const scrapeAnimeDetails = async ({ id }) => {
         };
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeSeason = async ({ list = [], season, page = 1 }) => {
+export const scrapeSeason = async ({list = [], season, page = 1}) => {
     try {
         const season_page = await axios.get(`${seasons_url}${season}?page=${page}`);
         const $ = cheerio.load(season_page.data);
@@ -500,16 +491,16 @@ export const scrapeSeason = async ({ list = [], season, page = 1 }) => {
         return list;
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeThread = async ({ episodeId, page = 0 }) => {
+export const scrapeThread = async ({episodeId, page = 0}) => {
     try {
         let threadId = null;
 
         const thread_page = await axios.get(disqus_iframe(decodeURIComponent(episodeId)));
-        const $ = cheerio.load(thread_page.data, { xmlMode: true });
+        const $ = cheerio.load(thread_page.data, {xmlMode: true});
 
         const thread = JSON.parse($('#disqus-threadData')[0].children[0].data);
 
@@ -527,14 +518,14 @@ export const scrapeThread = async ({ episodeId, page = 0 }) => {
         };
     } catch (err) {
         if (err.response.status === 400) {
-            return { error: 'Invalid page. Try again.' };
+            return {error: 'Invalid page. Try again.'};
         }
-        return { error: err };
+        return {error: err};
     }
 };
 
 
-export const scrapeWatchAnime = async ({ id }) => {
+export const scrapeWatchAnime = async ({id}) => {
     try {
         let genres = [];
         let epList = [];
@@ -579,11 +570,11 @@ export const scrapeWatchAnime = async ({ id }) => {
         };
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeSearchPage = async ({ keyw, page }) => {
+export const scrapeSearchPage = async ({keyw, page}) => {
     try {
         const SearchPage = await axios.get(`${BASE_URL + search_path}?keyword=${keyw}&page=${page}`);
 
@@ -596,11 +587,11 @@ export const scrapeSearchPage = async ({ keyw, page }) => {
         }
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapePopularPage = async ({ page }) => {
+export const scrapePopularPage = async ({page}) => {
     try {
         const PopularPage = await axios.get(`${BASE_URL}/popular.html?page=${page}`);
 
@@ -613,11 +604,11 @@ export const scrapePopularPage = async ({ page }) => {
         }
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeCompletedPage = async ({ page }) => {
+export const scrapeCompletedPage = async ({page}) => {
     try {
         const CompletedPage = await axios.get(`${BASE_URL}/completed-anime.html?page=${page}`);
 
@@ -630,11 +621,11 @@ export const scrapeCompletedPage = async ({ page }) => {
         }
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeOngoingPage = async ({ page }) => {
+export const scrapeOngoingPage = async ({page}) => {
     try {
         const OngoingPage = await axios.get(`${BASE_URL}/ongoing-anime.html?page=${page}`);
 
@@ -647,11 +638,11 @@ export const scrapeOngoingPage = async ({ page }) => {
         }
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeMoviePage = async ({ page }) => {
+export const scrapeMoviePage = async ({page}) => {
     try {
         const MoviePage = await axios.get(`${BASE_URL}/anime-movies.html?aph=&page=${page}`);
 
@@ -664,12 +655,12 @@ export const scrapeMoviePage = async ({ page }) => {
         }
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
 
-export const scrapeSubCategoryPage = async ({ subCategory, page }) => {
+export const scrapeSubCategoryPage = async ({subCategory, page}) => {
     try {
         const SubCategoryPage = await axios.get(`${BASE_URL}/sub-category/${subCategory}?page=${page}`);
 
@@ -682,11 +673,11 @@ export const scrapeSubCategoryPage = async ({ subCategory, page }) => {
         }
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeRecentPage = async ({ page, type }) => {
+export const scrapeRecentPage = async ({page, type}) => {
     try {
         const RecentPage = await axios.get(`${recent_release_url}?page=${page}&type=${type}`);
 
@@ -699,11 +690,11 @@ export const scrapeRecentPage = async ({ page, type }) => {
         }
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeNewSeasonPage = async ({ page }) => {
+export const scrapeNewSeasonPage = async ({page}) => {
     try {
         const NewSeasonPage = await axios.get(`${BASE_URL}/new-season.html?page=${page}`);
 
@@ -716,11 +707,11 @@ export const scrapeNewSeasonPage = async ({ page }) => {
         }
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeGenrePage = async ({ genre, page }) => {
+export const scrapeGenrePage = async ({genre, page}) => {
     try {
         const GenrePage = await axios.get(`${BASE_URL}/genre/${genre}?page=${page}`);
 
@@ -733,11 +724,11 @@ export const scrapeGenrePage = async ({ genre, page }) => {
         }
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeAnimeListPage = async ({ page }) => {
+export const scrapeAnimeListPage = async ({page}) => {
     try {
         const AnimeListPage = await axios.get(`${BASE_URL}/anime-list.html?page=${page}`);
 
@@ -750,11 +741,11 @@ export const scrapeAnimeListPage = async ({ page }) => {
         }
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };
 
-export const scrapeAnimeAZPage = async ({ aph, page = 1 }) => {
+export const scrapeAnimeAZPage = async ({aph, page = 1}) => {
     try {
         const AnimeAZPage = await axios.get(`${BASE_URL}/anime-list-${aph}?page=${page}`);
 
@@ -767,6 +758,6 @@ export const scrapeAnimeAZPage = async ({ aph, page = 1 }) => {
         }
     } catch (err) {
         console.log(err);
-        return { error: err };
+        return {error: err};
     }
 };

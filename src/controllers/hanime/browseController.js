@@ -9,7 +9,7 @@ const jsongen = async (url) => {
             'X-Signature': crypto.randomBytes(32).toString('hex'),
             'User-Agent': new UserAgent().random,
         };
-        const res = await axios.get(url, { headers });
+        const res = await axios.get(url, {headers});
         return res.data;
     } catch (error) {
         throw new Error(`Error fetching data: ${error.message}`);

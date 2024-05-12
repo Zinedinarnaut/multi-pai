@@ -1,5 +1,5 @@
-import { client } from "../utils/client.js";
-import { decrypt, extractVariables, getSecret } from "../utils/decrypt.js";
+import {client} from "../utils/client.js";
+import {decrypt, extractVariables, getSecret} from "../utils/decrypt.js";
 
 class Megacloud {
     constructor(videoUrl) {
@@ -41,7 +41,7 @@ class Megacloud {
             throw new Error("Unable to fetch script text to get vars !");
 
         const vars = extractVariables(scriptText.data, "MEGACLOUD");
-        const { secret, encryptedSource } = getSecret(res.data.sources, vars);
+        const {secret, encryptedSource} = getSecret(res.data.sources, vars);
         const value = decrypt(encryptedSource, secret);
         const files = JSON.parse(value);
         files.map((s) => {
@@ -55,4 +55,4 @@ class Megacloud {
     }
 }
 
-export { Megacloud };
+export {Megacloud};

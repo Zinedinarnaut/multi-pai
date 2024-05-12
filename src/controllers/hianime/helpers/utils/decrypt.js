@@ -68,7 +68,7 @@ const getSecret = (encryptedString, values) => {
             (totalInc += inc);
     }
 
-    return { secret, encryptedSource };
+    return {secret, encryptedSource};
 };
 
 const decrypt = (
@@ -106,4 +106,4 @@ const decrypt = (
     ) + decipher.final();
 };
 
-export { extractVariables, getSecret, decrypt };
+export {extractVariables, getSecret, decrypt};

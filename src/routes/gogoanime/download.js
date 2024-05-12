@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DownloadReferer } from '../../controllers/gogoanime/anime_parser.js';
+import {DownloadReferer} from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleDownload(req, res) {
     try {
@@ -15,7 +15,7 @@ export async function handleDownload(req, res) {
 
         await axios
             .get(downloadLink, {
-                headers: { Referer: DownloadReferer },
+                headers: {Referer: DownloadReferer},
                 responseType: 'stream',
             })
             .then((stream) => {

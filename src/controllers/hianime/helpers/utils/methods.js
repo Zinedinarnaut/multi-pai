@@ -1,8 +1,8 @@
-import { client } from "./client.js";
-import { ANILIST_BASEURL, ANIME_QUERY, HIANIME_BASEURL } from "./constant.js";
-import { load } from "cheerio";
+import {client} from "./client.js";
+import {ANILIST_BASEURL, ANIME_QUERY, HIANIME_BASEURL} from "./constant.js";
+import {load} from "cheerio";
 import match from "string-similarity-js";
-import { Megacloud } from "../extractors/megacloud.js";
+import {Megacloud} from "../extractors/megacloud.js";
 
 export const fetchAnilistInfo = async (id) => {
     try {
@@ -25,7 +25,7 @@ export const fetchAnilistInfo = async (id) => {
             recommendations: data.recommendations.edges.map(
                 (el) => el.node.mediaRecommendation
             ),
-            relations: data.relations.edges.map((el) => ({ id: el.id, ...el.node })),
+            relations: data.relations.edges.map((el) => ({id: el.id, ...el.node})),
             characters: data.characters.edges.map((el) => ({
                 role: el.role,
                 ...el.node,
@@ -61,7 +61,7 @@ export const searchNScrapeEPs = async (searchTitle) => {
                         ) * 10
                     ).toFixed(2)
                 );
-                similarTitles.push({ id, title, similarity });
+                similarTitles.push({id, title, similarity});
             })
             .get();
 
@@ -104,7 +104,7 @@ export const getEpisodes = async (animeId) => {
         return episodesList;
     } catch (err) {
         console.error(err);
-        return { episodesList: null };
+        return {episodesList: null};
     }
 };
 
@@ -139,7 +139,7 @@ export const getServers = async (epId) => {
         return servers;
     } catch (err) {
         console.error(err);
-        return { servers: null };
+        return {servers: null};
     }
 };
 
@@ -156,20 +156,20 @@ export const getSources = async (serverId, epId) => {
         );
 
         const link = res.data.link;
-        if (!link) return { sources: null };
+        if (!link) return {sources: null};
 
         let sources;
         if (String(link).includes("megacloud"))
             sources = await new Megacloud(res.data.link).scrapeMegaCloud();
-        else if (String(link).includes("watchsb")) sources = { sources: null };
-        else if (String(link).includes("streamtape")) sources = { sources: null };
+        else if (String(link).includes("watchsb")) sources = {sources: null};
+        else if (String(link).includes("streamtape")) sources = {sources: null};
         else {
-            sources = { sources: null };
+            sources = {sources: null};
             console.log("Unknown link !");
         }
         return sources;
     } catch (err) {
         console.error(err);
-        return { sources: null };
+        return {sources: null};
     }
 };

@@ -1,10 +1,10 @@
-import { vidsrcBase } from "./common.js";
-import { load } from "cheerio";
-import { decryptSourceUrl } from "./utils.js";
+import {vidsrcBase} from "./common.js";
+import {load} from "cheerio";
+import {decryptSourceUrl} from "./utils.js";
 
-export async function getVidsrcSourcesId(tmdbId, seasonNumber, episodeNumber){
+export async function getVidsrcSourcesId(tmdbId, seasonNumber, episodeNumber) {
     const type = seasonNumber && episodeNumber ? "tv" : "movie";
-    const url = `${vidsrcBase}/embed/${type}/${tmdbId}${type === "tv" ? `/${seasonNumber}/${episodeNumber}`: ''}`
+    const url = `${vidsrcBase}/embed/${type}/${tmdbId}${type === "tv" ? `/${seasonNumber}/${episodeNumber}` : ''}`
     try {
         const data = await (await fetch(url)).text();
 
@@ -13,19 +13,17 @@ export async function getVidsrcSourcesId(tmdbId, seasonNumber, episodeNumber){
 
         return sourcesCode;
     } catch (err) {
-        return;
+
     }
 }
 
-export async function getVidsrcSources(sourceId)
-{
+export async function getVidsrcSources(sourceId) {
     const data = await (await fetch(`${vidsrcBase}/ajax/embed/episode/${sourceId}/sources`)).json();
 
     return data;
 }
 
-export async function getVidsrcSourceDetails(sourceId)
-{
+export async function getVidsrcSourceDetails(sourceId) {
     const data = await (await fetch(`${vidsrcBase}/ajax/embed/source/${sourceId}`)).json();
 
     const encryptedUrl = data.result.url;
@@ -33,10 +31,8 @@ export async function getVidsrcSourceDetails(sourceId)
     return decodeURIComponent(decryptedUrl);
 }
 
-export async function getSubtitles(vidplayLink)
-{
-    if(vidplayLink.includes('sub.info='))
-    {
+export async function getSubtitles(vidplayLink) {
+    if (vidplayLink.includes('sub.info=')) {
         const subtitleLink = vidplayLink.split('?sub.info=')[1].split('&')[0];
         const subtitlesFetch = await (await fetch(decodeURIComponent(subtitleLink))).json();
         return subtitlesFetch;

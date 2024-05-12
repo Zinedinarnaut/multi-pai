@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const extractFembed = async(url) => {
+export const extractFembed = async (url) => {
     try {
         url = new URL(url);
         const fembedApiUrl = url.href.replace('/v/', '/api/source/');
@@ -19,6 +19,6 @@ export const extractFembed = async(url) => {
             data: res.data.data,
         };
     } catch (e) {
-        return { error: 'No sources found!! Try different source\n\n' + e.message };
+        return {error: 'No sources found!! Try different source\n\n' + e.message};
     }
 };

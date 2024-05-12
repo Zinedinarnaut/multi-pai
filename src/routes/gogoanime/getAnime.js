@@ -1,9 +1,9 @@
-import { scrapeAnimeDetails } from '../../controllers/gogoanime/anime_parser.js';
+import {scrapeAnimeDetails} from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleGetAnime(req, res) {
     try {
         const id = req.params.id;
-        const data = await scrapeAnimeDetails({ id: id });
+        const data = await scrapeAnimeDetails({id: id});
 
         res.status(200).json(data);
     } catch (err) {
