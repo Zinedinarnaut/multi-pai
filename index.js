@@ -62,7 +62,7 @@ app.use((err, req, res, next) => {
 });
 
 // Hanime Routes
-app.use('/hanime/watch', watchRoute);
+app.use('/hanime/video', watchRoute);
 app.use('/hanime/trending', trendingRoute);
 app.use('/hanime/browse', browseRoute);
 app.use('/hanime/tags', tagsRoute);
