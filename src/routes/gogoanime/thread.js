@@ -1,4 +1,4 @@
-import { scrapeThread } from '../../gogoanime/anime_parser.js';
+import { scrapeThread } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleThread(req, res) {
     try {

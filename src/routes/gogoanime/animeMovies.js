@@ -1,4 +1,4 @@
-import { scrapeAnimeMovies } from '../../gogoanime/anime_parser.js';
+import { scrapeAnimeMovies } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleAnimeMovies(req, res) {
     try {

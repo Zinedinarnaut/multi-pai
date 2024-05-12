@@ -1,4 +1,4 @@
-import { scrapeRecentRelease } from '../../gogoanime/anime_parser.js';
+import { scrapeRecentRelease } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleRecentRelease(req, res) {
     try {

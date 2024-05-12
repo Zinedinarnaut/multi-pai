@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { DownloadReferer } from '../../gogoanime/anime_parser.js';
+import { DownloadReferer } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleDownload(req, res) {
     try {

@@ -1,4 +1,4 @@
-import { scrapeCompletedPage } from '../../gogoanime/anime_parser.js';
+import { scrapeCompletedPage } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleCompletedPage(req, res) {
     try {

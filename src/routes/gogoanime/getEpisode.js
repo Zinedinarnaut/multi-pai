@@ -1,4 +1,4 @@
-import { scrapeWatchAnime } from '../../gogoanime/anime_parser.js';
+import { scrapeWatchAnime } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleGetEpisode(req, res) {
     try {

@@ -1,4 +1,4 @@
-import { scrapeOngoingPage } from '../../gogoanime/anime_parser.js';
+import { scrapeOngoingPage } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleOngoingPage(req, res) {
     try {

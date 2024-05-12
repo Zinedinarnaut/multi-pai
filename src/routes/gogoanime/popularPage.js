@@ -1,4 +1,4 @@
-import { scrapePopularPage } from '../../gogoanime/anime_parser.js';
+import { scrapePopularPage } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handlePopularPage(req, res) {
     try {

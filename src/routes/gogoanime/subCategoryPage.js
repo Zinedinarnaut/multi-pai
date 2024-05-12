@@ -1,4 +1,4 @@
-import { scrapeSubCategoryPage } from '../../gogoanime/anime_parser.js';
+import { scrapeSubCategoryPage } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleSubCategoryPage(req, res) {
     try {

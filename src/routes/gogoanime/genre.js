@@ -1,4 +1,4 @@
-import { scrapeGenre } from '../../gogoanime/anime_parser.js';
+import { scrapeGenre } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleGenre(req, res) {
     try {

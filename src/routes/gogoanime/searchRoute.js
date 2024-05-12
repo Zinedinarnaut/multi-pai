@@ -1,4 +1,4 @@
-import { scrapeSearch } from '../../gogoanime/anime_parser.js';
+import { scrapeSearch } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleSearch(req, res) {
     try {

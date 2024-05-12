@@ -1,4 +1,4 @@
-import { scrapeTopAiringAnime } from '../../gogoanime/anime_parser.js';
+import { scrapeTopAiringAnime } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleTopAiringAnime(req, res) {
     try {

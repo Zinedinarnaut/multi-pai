@@ -1,4 +1,4 @@
-import { scrapeNewSeason } from '../../gogoanime/anime_parser.js';
+import { scrapeNewSeason } from '../../controllers/gogoanime/anime_parser.js';
 
 export async function handleNewSeason(req, res) {
     try {
