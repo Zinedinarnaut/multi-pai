@@ -21,6 +21,6 @@
     "http-proxy-middleware": "^3.0.0",
     "node-fetch": "^2.6.1",
     "random-useragent": "^0.5.0",
-    "string-similarity-js": "^2.1.4",
+    "string-similarity-js": "^2.1.4"
   }
 }
