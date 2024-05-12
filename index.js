@@ -55,11 +55,22 @@ import { handleDownload } from './src/routes/gogoanime/download.js';
 // Vidsrc Routes
 import tmdbRoutes from "./src/routes/vidsrc/tmdbRoute.js";
 
+// HiAnime Routes
+
+import animeInfoRoute from './src/routes/hianime/animeInfo.js';
+import animeServersRoute from './src/routes/hianime/animeServers.js';
+import animeSourcesRoute from './src/routes/hianime/animeSources.js';
+
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({ error: 'Something went wrong' });
 });
+
+// HiAnime Routes
+app.use('/anime/info/:ID', animeInfoRoute);
+app.use('/anime/servers', animeServersRoute);
+app.use('/anime/sources', animeSourcesRoute);
 
 // Hanime Routes
 app.use('/hanime/video', watchRoute);
@@ -103,7 +114,7 @@ app.get('/gogoanime/thread/:episodeId', handleThread);
 app.get('/gogoanime/download-links', handleDownloadLinks);
 app.get('/gogoanime/download', handleDownload);
 
-app.get('/', (req, res) => {
+app.use('/', (req, res) => {
     res.send('Welcome to Multi-Pai');
 });
 
