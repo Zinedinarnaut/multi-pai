@@ -1,6 +1,6 @@
 import express from "express";
-import {getSubtitles, getVidsrcSourceDetails, getVidsrcSources, getVidsrcSourcesId} from "../../vidsrc/hooks.js";
-import {encodeId, generateRandomIp, getFutoken} from "../../vidsrc/vidplay/utils.js";
+import {getSubtitles, getVidsrcSourceDetails, getVidsrcSources, getVidsrcSourcesId} from "../../controllers/vidsrc/hooks.js";
+import {encodeId, generateRandomIp, getFutoken} from "../../controllers/vidsrc/vidplay/utils.js";
 import randomUserAgent from 'random-useragent';
 
 const router = express.Router();
