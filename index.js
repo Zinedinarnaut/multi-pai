@@ -47,7 +47,7 @@ app.use('/hanime/browse', browseVideosRoute);
 // Vidsrc Routes
 app.use('/vidplay/tmdb', tmdbRoutes);
 
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Welcome to Multi-Pai');
 });
 
@@ -60,5 +60,5 @@ app.use((req, res) => {
 
 const server = app.listen(process.env.PORT || 3005, () => {
     const port = server.address().port;
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on port http://localhost:${port}`);
 });
