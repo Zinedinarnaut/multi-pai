@@ -165,7 +165,7 @@ export const getSources = async (serverId, epId) => {
         else if (String(link).includes("streamtape")) sources = {sources: null};
         else {
             sources = {sources: null};
-            console.log("Unknown link !");
+            console.log("Unknown link!");
         }
         return sources;
     } catch (err) {

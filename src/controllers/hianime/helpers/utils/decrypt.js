@@ -13,14 +13,12 @@ const extractVariables = (text, sourceName) => {
         allvars =
             text.match(/\w{1,2}=new URLSearchParams.+?;(?=function)/gm)?.slice(-1)[0] ?? "";
     }
-    const vars = allvars
+    return allvars
         .slice(0, -1)
         .split("=")
         .slice(1)
         .map((pair) => Number(pair.split(",")[0]))
         .filter((num) => num === 0 || num);
-
-    return vars;
 };
 
 const getSecret = (encryptedString, values) => {

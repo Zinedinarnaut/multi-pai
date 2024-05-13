@@ -38,7 +38,7 @@ class Megacloud {
         );
 
         if (!scriptText)
-            throw new Error("Unable to fetch script text to get vars !");
+            throw new Error("Unable to fetch script text to get vars!");
 
         const vars = extractVariables(scriptText.data, "MEGACLOUD");
         const {secret, encryptedSource} = getSecret(res.data.sources, vars);
