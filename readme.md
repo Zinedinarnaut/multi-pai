@@ -1,8 +1,12 @@
 # [Multi Pai](https://multi-pai.vercel.app/)
 
+<head>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+
 <p>Welcome to Multi-Pai, Multi-Pai is a api that has 3 seperate projects into one </p>
 
-<div class="alert alert-warning">
+<div class="alert alert-warning" style="padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: .25rem; color: #856404; background-color: #fff3cd;">
   Gogoanime has been removed due to bad mapping
 </div>
 
@@ -71,28 +75,8 @@ https://multi-pai.vercel.app/vidplay/tmdb/198663
 https://multi-pai.vercel.app/vidplay/tmdb/1429?s=1&e=1
 ```
 
+<div class="alert-info" style="padding: 15px; margin-bottom: 20px; border: 1px solid transparent; border-radius: .25rem; color: #856404; background-color: #fff3cd;">
+  Multi-Pai will receive daily updates and it is in early stages of development
+</div>
+
 Feel free to explore the API and customize it to fit your project's requirements. If you have any questions or need assistance, refer to the Issues section of the repository.
-
-<style>
-.alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-}
-
-.alert-info {
-  color: #0056b3; /* Text color */
-  background-color: #e7f0ff; /* Background color */
-}
-
-.alert-warning {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: .25rem;
-
-  color: #856404; /* Text color */
-  background-color: #fff3cd; /* Background color */
-}
-</style>
