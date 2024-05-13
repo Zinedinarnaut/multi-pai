@@ -1,7 +1,7 @@
 // redisCache.js
 import IORedis from 'ioredis';
 
-const REDIS_URL = process.env.REDIS_URL || 'redis://default:upxzipxPnOaHomPmFTWYTuYxyJexaUZW@viaduct.proxy.rlwy.net:47369';
+const REDIS_URL = process.env.REDIS_URL || '';
 
 const client = new IORedis(REDIS_URL);
 
