@@ -1,7 +1,7 @@
 # [Multi Pai](https://multi-pai.vercel.app/)
 
 <head>
-  <link rel="stylesheet" href="./src/style.css">
+  <link rel="stylesheet" href="https://raw.githubusercontent.com/Zinedinarnaut/multi-pai/master/src/style.css">
 </head>
 
 <p>Welcome to Multi-Pai, Multi-Pai is a api that has 3 seperate projects into one </p>
